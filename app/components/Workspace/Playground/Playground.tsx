@@ -172,7 +172,7 @@ const Playground: React.FC<PlaygroundProps> = ({ problem, setSuccess, setSolved,
 			setSolved(true);
 			setSuccess(true);
 			setLoading(false)
-			navigate("/Greetings");
+			// navigate("/Greetings");
 			setTimeout(() => {
 				setSuccess(false);
 			}, 4000);
@@ -292,13 +292,13 @@ const Playground: React.FC<PlaygroundProps> = ({ problem, setSuccess, setSolved,
 										<div className="flex">
 											<div>
 											{problem?.customExample?.input.map((input, index) => (
-												<p className='text-sm font-medium mt-4 text-white px-3'>{input.name} :</p>
+												<p key={"problemname"+index} className='text-sm font-medium mt-4 text-white px-3'>{input.name} :</p>
 											))}
 											</div>
 											<div >
 											{problem?.customExample?.input.map((input, index) => (
-												<div className='w-full cursor-text rounded-lg border bg-dark-fill-3 border-transparent text-white mt-2'>
-												<Input onChange={({ target }) => handleInputChange(index, target.value)} defaultValue={input.value}/>
+												<div key={"problemvalue"+index} className='w-full cursor-text rounded-lg border bg-dark-fill-3 border-transparent text-white mt-2'>
+												<Input onChange={({ target }) => handleInputChange(index, target.value)} defaultValue={input.value} crossOrigin={undefined}/>
 												</div>
 											))}
 											</div>
