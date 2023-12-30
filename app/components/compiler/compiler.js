@@ -11,6 +11,7 @@ import {
 	MediaPermissionsErrorType,
 	requestMediaPermissions
   } from 'mic-check';
+let BackendBaseURL = process.env.BACK_END_URL || 'http://localhost:8000/';
 
 const Compiler = ()=>{
     // / State variable to set users source code
@@ -51,7 +52,7 @@ const Compiler = ()=>{
 		}
 		console.log("calling compile api");
 		// Post request to compile endpoint
-		Axios.post(`http://localhost:8000/compile`, {
+		Axios.post(BackendBaseURL +`compile`, {
 			code: userCode,
 			language: userLang,
 			input: userInput
@@ -71,7 +72,7 @@ const Compiler = ()=>{
 		}
 		console.log("calling compile api");
 		// Post request to compile endpoint
-		Axios.post(`http://localhost:8000/compileWithTestCase`, {
+		Axios.post(BackendBaseURL+`compileWithTestCase`, {
 			code: userCode,
 			language: userLang,
 			problem_id: problemId
@@ -87,7 +88,7 @@ const Compiler = ()=>{
 	useEffect(() => {
         async function createMarkup() {
         	let response;
-        	response = await Axios.post(`http://localhost:8000/startTest`, {userId: "123"})
+        	response = await Axios.post(BackendBaseURL+`startTest`, {userId: "123"})
 		  	console.log("start test response", response)
         	const backendHtmlString = await response.data.problemList[0].problem_desc;
     

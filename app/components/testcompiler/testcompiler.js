@@ -4,6 +4,8 @@ import Editor from "@monaco-editor/react";
 import Navbar from '../Navbar';
 import Axios from 'axios';
 import spinner from '../../spinner.svg';
+import Image from 'next/image';
+let BackendBaseURL = process.env.BACK_END_URL || 'http://localhost:8000/';
 
 function TestCompiler() {
 	// State variable to set users source code
@@ -40,7 +42,7 @@ function TestCompiler() {
 		}
 		console.log("calling compile api");
 		// Post request to compile endpoint
-		Axios.post(`http://localhost:8000/compile`, {
+		Axios.post(BackendBaseURL+`compile`, {
 			code: userCode,
 			language: userLang,
 			input: userInput
@@ -91,7 +93,7 @@ function TestCompiler() {
 					<h4>Output:</h4>
 					{loading ? (
 						<div className="spinner-box">
-							<img src={spinner} alt="Loading..." />
+							<Image src={spinner} alt="Loading..." />
 						</div>
 					) : (
 						<div className="output-box">

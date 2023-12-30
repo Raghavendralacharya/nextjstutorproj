@@ -7,6 +7,8 @@ import useWindowSize from "../../hooks/useWindowSize";
 import Axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel, } from "@material-tailwind/react";
+let BackendBaseURL = process.env.BACK_END_URL || 'http://localhost:8000/';
+console.log("BackendBaseURL", BackendBaseURL,  process.env)
 
 const pid = "two-sum" ;
 let timeComp = true;
@@ -27,7 +29,7 @@ const Workspace = () => {
 		const getProblem = async () => {
 			setLoading(true);
 
-			let res = await Axios.get(`http://localhost:8000/getProblem`)
+			let res = await Axios.get(BackendBaseURL+`getProblem`)
 			// .then((res) => {
 			console.log("res problem", res?.data?.problemList[0]);
 			let resproblem = res?.data?.problemList[0] || {}
@@ -123,7 +125,7 @@ async function useGetCurrentProblem(problemId) {
 		const getProblem = async () => {
 			setLoading(true);
 
-			let res = await Axios.get(`http://localhost:8000/getProblem`)
+			let res = await Axios.get(BackendBaseURL+`getProblem`)
 			// .then((res) => {
 			console.log("res problem", res?.data?.problemList[0]);
 			let resproblem = res?.data?.problemList[0] || {}

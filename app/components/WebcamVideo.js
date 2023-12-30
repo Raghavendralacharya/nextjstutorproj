@@ -1,6 +1,7 @@
 import React, { useCallback, useRef, useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import Axios from 'axios';
+const BackendBaseURL = process.env.BACK_END_URL || 'http://localhost:8000/';
 
 export default function WebcamVideo({submVideo}) {
   const webcamRef = useRef(null);
@@ -64,7 +65,7 @@ export default function WebcamVideo({submVideo}) {
       formData.append("file", blob);
       console.log("blobdata",blob);
       console.log("Request", formData);
-      const url = 'http://localhost:8000/upload';
+      const url = BackendBaseURL +'upload';
 
       // Send the POST request using Axios
       Axios.post(url, formData, {

@@ -10,7 +10,7 @@ import { TiStarOutline } from "react-icons/ti";
 import { toast } from "react-toastify";
 import WebcamVideo from "../../WebcamVideo";
 import Axios from 'axios';
-
+let BackendBaseURL = process.env.BACK_END_URL || 'http://localhost:8000/';
 
 
 const ProblemDescription = ({ problem, _solved, submVideo }) => {
@@ -284,7 +284,7 @@ function useGetCurrentProblem(problemId) {
 		const getCurrentProblem = async () => {
 			setLoading(true);
 
-			// Axios.get(`http://localhost:8000/getProblem`)
+			// Axios.get(BackendBaseURL+`getProblem`)
 			// .then((res) => {
 				// console.log("res problem", res?.data?.problemList[0]);
 				// problem = res?.data?.problemList[0] || {}

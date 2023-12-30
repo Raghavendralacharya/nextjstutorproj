@@ -17,6 +17,8 @@ import { toast } from "react-toastify";
 import Axios from 'axios';
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel,Input } from "@material-tailwind/react";
 import { Link, useNavigate} from 'react-router-dom'
+let BackendBaseURL = process.env.BACK_END_URL || 'http://localhost:8000/';
+
 
 type PlaygroundProps = {
 	problem: Problem;
@@ -122,7 +124,7 @@ const Playground: React.FC<PlaygroundProps> = ({ problem, setSuccess, setSolved,
 		},"")
 		console.log("input", input);
 		setSubmVideo(true);
-		Axios.post(`http://localhost:8000/api/compileWtihCustomTC`, {
+		Axios.post(BackendBaseURL+`compileWtihCustomTC`, {
 			code: userCode,
 			language: selUserLang,
 			problem_id: "P1111",
@@ -156,7 +158,7 @@ const Playground: React.FC<PlaygroundProps> = ({ problem, setSuccess, setSolved,
 		let input = customInput
 		console.log("input", input);
 		setSubmVideo(true);
-		Axios.post(`http://localhost:8000/api/compileWithTestCaseDummy`, {
+		Axios.post(BackendBaseURL+`compileWithTestCaseDummy`, {
 			code: userCode,
 			language: selUserLang,
 			problem_id: "P1111",
