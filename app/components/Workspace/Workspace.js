@@ -9,6 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { Tabs, TabsHeader, TabsBody, Tab, TabPanel, } from "@material-tailwind/react";
 let BackendBaseURL = process.env.BACK_END_URL || 'http://localhost:8000/';
 console.log("BackendBaseURL", BackendBaseURL,  process.env)
+import Head from 'next/head';
 
 const pid = "two-sum" ;
 let timeComp = true;
@@ -83,6 +84,10 @@ const Workspace = () => {
             // <TabsBody className = "p-0">
             //     <TabPanel key="tab1" value="tab1" className = "p-0">
 					<div>
+						 <Head>
+							{/* Add the Content-Security-Policy meta tag */}
+							<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+						</Head>
 						<Split className='split' minSize={0}>
 							<div>
 								<ProblemDescription problem={problem} _solved={solved} submVideo={submVideo}/>
